@@ -118,12 +118,10 @@ SetupP1     bic.b   #BIT0,&P1OUT            ; Clear P1.0 output
             bis.w	#GIE, SR					;Enable global interrupt
             NOP
             xor.b   #BIT6,&P6OUT            ; Toggle P6.6 on
-Mainloop    xor.b   #BIT0,&P1OUT            ; Toggle P1.0 every 0.1s
+Mainloop    xor.b   #BIT0,&P1OUT            ; Toggle P1.0 every 1s
 Wait        mov.w   #1000,R15              ; Delay to R15
             call #delay
-;L1
-            ;dec.w   R15                     ; Decrement R15
-            ;jnz L1
+
             jmp     Mainloop                ; Again
             NOP
 
